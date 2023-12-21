@@ -1,51 +1,17 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
+import 'package:media_player_11/modules/utils/tabs/audio/widgets/audio_controls.dart';
+
+import '../../constants/constant.dart';
 
 class AudioTab extends StatelessWidget {
   AudioTab({super.key});
-
-  AssetsAudioPlayer assetsAudioPlayer = AssetsAudioPlayer();
-
-  playAudio() {
-    assetsAudioPlayer.open(
-      Audio("assets/music/jay_shree_ram.mp3"),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          FloatingActionButton(
-            onPressed: () {
-              assetsAudioPlayer.pause();
-            },
-            child: const Icon(Icons.pause),
-          ),
-          FloatingActionButton(
-            onPressed: () {
-              assetsAudioPlayer.play();
-            },
-            child: const Icon(Icons.play_arrow),
-          ),
-          FloatingActionButton(
-            onPressed: () {
-              playAudio();
-            },
-            child: const Icon(Icons.refresh),
-          ),
-          FloatingActionButton(
-            onPressed: () {
-              assetsAudioPlayer.playOrPause();
-            },
-            child: const Icon(Icons.play_circle_fill),
-          ),
-        ],
-      ),
+      floatingActionButton: audio_controls(),
       body: StreamBuilder(
-        stream: assetsAudioPlayer.currentPosition,
+        stream: Constant.assetsAudioPlayer.currentPosition,
         builder: (context, snapshot) {
           return Center(
             child: Row(

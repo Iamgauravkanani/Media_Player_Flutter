@@ -1,11 +1,9 @@
-import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:media_player_11/modules/utils/tabs/audio/widgets/audio_controls.dart';
-
 import '../../constants/constant.dart';
 
 class AudioTab extends StatelessWidget {
-  AudioTab({super.key});
+  const AudioTab({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
